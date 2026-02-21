@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://f6e5rigvly0h"]
+
+[ext_resource type="Texture2D" uid="uid://cl8un08ma28u7" path="res://assets/sprites/rock-small.png" id="1_ckhff"]
+[ext_resource type="Script" uid="uid://b1dciimbp7rdq" path="res://scenes/asteroids/asteroid.gd" id="1_kfbcv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfbcv"]
+radius = 31.257
+
+[node name="SmallAsteroid" type="Area2D" unique_id=119595241]
+script = ExtResource("1_kfbcv")
+speed = 350.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=887107703]
+texture = ExtResource("1_ckhff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34146394]
+position = Vector2(1, -3)
+shape = SubResource("CircleShape2D_kfbcv")
