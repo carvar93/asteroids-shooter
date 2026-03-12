@@ -1,57 +1,65 @@
-[gd_scene format=3 uid="uid://cuprbq600w8r8"]
+[gd_scene load_steps=7 format=3 uid="uid://cuprbq600w8r8"]
 
 [ext_resource type="Texture2D" uid="uid://cymnql4of0twx" path="res://assets/sprites/background.png" id="1_hyk8p"]
-[ext_resource type="PackedScene" uid="uid://cv3rce54ut6xj" path="res://scenes/asteroids/big_asteroid.tscn" id="2_iuonh"]
 [ext_resource type="PackedScene" uid="uid://u57j8cw0hyvx" path="res://scenes/player/player.tscn" id="3_k2fmo"]
+[ext_resource type="Script" uid="uid://b24hs15glwf82" path="res://scenes/main/asteroid_spawner.gd" id="3_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://f6e5rigvly0h" path="res://scenes/asteroids/small_asteroid.tscn" id="4_l3cfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3cfh"]
 size = Vector2(1160, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2fmo"]
-size = Vector2(675, 22.999937)
+size = Vector2(675, 22.9999)
 
-[node name="Main" type="Node2D" unique_id=813902980]
+[node name="Main" type="Node2D"]
+position = Vector2(-27, 2)
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1018752542]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(292, 123)
 texture = ExtResource("1_hyk8p")
 
-[node name="BigAsteroid" parent="." unique_id=74068590 instance=ExtResource("2_iuonh")]
-position = Vector2(1164, 299)
-speed = 690.0
+[node name="Player" parent="." instance=ExtResource("3_k2fmo")]
 
-[node name="Player" parent="." unique_id=1587543299 instance=ExtResource("3_k2fmo")]
+[node name="Walls" type="Node2D" parent="."]
 
-[node name="Walls" type="Node2D" parent="." unique_id=2074549929]
+[node name="TopWall" type="StaticBody2D" parent="Walls"]
 
-[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=1506789883]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=1654061376]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall"]
 position = Vector2(585, -4)
 shape = SubResource("RectangleShape2D_l3cfh")
 metadata/_edit_group_ = true
 
-[node name="BottomWall" type="StaticBody2D" parent="Walls" unique_id=1487763003]
+[node name="BottomWall" type="StaticBody2D" parent="Walls"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=2021823622]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall"]
 position = Vector2(583, 659)
 shape = SubResource("RectangleShape2D_l3cfh")
 metadata/_edit_group_ = true
 
-[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=281710327]
+[node name="LeftWall" type="StaticBody2D" parent="Walls"]
 position = Vector2(-12, 633)
-rotation = -1.5707964
+rotation = -1.5708
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=1783006459]
-position = Vector2(299.5, 1.5000305)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+position = Vector2(299.5, 1.50003)
 shape = SubResource("RectangleShape2D_k2fmo")
 
-[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=3994729]
+[node name="RightWall" type="StaticBody2D" parent="Walls"]
 position = Vector2(1152, 627)
-rotation = -1.5707964
+rotation = -1.5708
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=1910123713]
-position = Vector2(299.5, 1.5000305)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+position = Vector2(299.5, 1.50003)
 shape = SubResource("RectangleShape2D_k2fmo")
+
+[node name="AsteroidSpawner" type="Marker2D" parent="."]
+position = Vector2(1222, 310)
+script = ExtResource("3_l3cfh")
+big_asteroid_scene = ExtResource("4_l3cfh")
+
+[node name="Timer" type="Timer" parent="AsteroidSpawner"]
+autostart = true
+
+[connection signal="timeout" from="AsteroidSpawner/Timer" to="AsteroidSpawner" method="_on_timer_timeout"]

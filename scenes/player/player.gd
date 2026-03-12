@@ -7,4 +7,8 @@ func _physics_process(delta: float) -> void:
 	#Movimiento de cuerpos fisicos (characterBody2D,RigidBody2d)
 	var y_input = Input.get_axis("up","down") # las 2 inputs definidas 
 	velocity.y = y_input * speed
+	
+	var x_input = Input.get_axis("left","right")
+	velocity.x = x_input * speed
+	
 	move_and_slide()
