@@ -1,23 +1,23 @@
-[gd_scene format=3 uid="uid://mlqmrplm7cwf"]
+[gd_scene load_steps=4 format=3 uid="uid://mlqmrplm7cwf"]
 
 [ext_resource type="Script" uid="uid://dlmhyf2ailxtk" path="res://laser.gd" id="1_j8ec3"]
 [ext_resource type="Texture2D" uid="uid://fxwpstrsgyr7" path="res://assets/sprites/laser.png" id="2_kfde8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bx1b7"]
-radius = 7.999996
+radius = 8.0
 height = 66.0
 
-[node name="Laser" type="Area2D" unique_id=1637866814]
-position = Vector2(-11, 15)
+[node name="Laser" type="Area2D"]
+position = Vector2(97, 368)
 script = ExtResource("1_j8ec3")
 laserSpeed = 1000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1834814886]
-position = Vector2(106, 44)
-rotation = 1.5707964
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(106, 23)
+rotation = 1.5708
 texture = ExtResource("2_kfde8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=590626755]
-position = Vector2(109, 43)
-rotation = -1.5707964
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(106, 24)
+rotation = -1.5708
 shape = SubResource("CapsuleShape2D_bx1b7")

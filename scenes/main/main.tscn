@@ -19,6 +19,7 @@ position = Vector2(292, 123)
 texture = ExtResource("1_hyk8p")
 
 [node name="Player" parent="." instance=ExtResource("3_k2fmo")]
+position = Vector2(184, 181)
 
 [node name="Walls" type="Node2D" parent="."]
 
