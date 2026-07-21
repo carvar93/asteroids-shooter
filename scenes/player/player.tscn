@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://u57j8cw0hyvx"]
+[gd_scene load_steps=5 format=3 uid="uid://u57j8cw0hyvx"]
 
 [ext_resource type="Texture2D" uid="uid://bkpsqraid8ewd" path="res://assets/sprites/ship.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://i2fw7vk1f0lc" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://mlqmrplm7cwf" path="res://scenes/laser/laser.tscn" id="2_gmlin"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
+radius = 17.5286
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(123, 200)
+position = Vector2(83, 185)
 script = ExtResource("1_dovo2")
 laser_scene = ExtResource("2_gmlin")
 speed = 450.0
@@ -23,3 +26,13 @@ scale = Vector2(1, 0.875744)
 polygon = PackedVector2Array(39, 38, -26, -50, -25, 118)
 
 [node name="ShootPoint" type="Marker2D" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-4, 24)
+rotation = -0.120428
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_gmlin")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]

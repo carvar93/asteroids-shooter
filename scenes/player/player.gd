@@ -25,3 +25,7 @@ func create_laser():
 	var laser_instance = laser_scene.instantiate()
 	add_sibling(laser_instance)
 	laser_instance.global_position = $ShootPoint.global_position
+
+
+func _on_detection_area_area_entered(area: Area2D) -> void:
+		queue_free()
