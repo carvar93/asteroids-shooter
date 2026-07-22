@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_l3cfh")
 metadata/_edit_group_ = true
 
 [node name="LeftWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(-12, 633)
+position = Vector2(40, 628)
 rotation = -1.5708
 metadata/_edit_group_ = true
 
