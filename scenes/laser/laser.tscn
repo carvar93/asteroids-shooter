@@ -17,7 +17,7 @@ position = Vector2(106, 23)
 rotation = 1.5708
 texture = ExtResource("2_kfde8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["laser"]]
 position = Vector2(106, 24)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_bx1b7")

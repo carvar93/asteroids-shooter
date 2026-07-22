@@ -1,8 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://u57j8cw0hyvx"]
+[gd_scene load_steps=8 format=3 uid="uid://u57j8cw0hyvx"]
 
 [ext_resource type="Texture2D" uid="uid://bkpsqraid8ewd" path="res://assets/sprites/ship.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://i2fw7vk1f0lc" path="res://scenes/player/player.gd" id="1_dovo2"]
-[ext_resource type="PackedScene" uid="uid://mlqmrplm7cwf" path="res://scenes/laser/laser.tscn" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://dlmhyf2ailxtk" path="res://laser.gd" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://fxwpstrsgyr7" path="res://assets/sprites/laser.png" id="3_p47bc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bx1b7"]
+radius = 8.0
+height = 66.0
+
+[sub_resource type="PackedScene" id="PackedScene_75vfm"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741827, 1073741826, 16, 15, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Laser", "Area2D", "position", "script", "laserSpeed", "Sprite2D", "Sprite2D", "position", "rotation", "texture", "CollisionShape2D", "CollisionShape2D", "position", "rotation", "shape", "_on_area_entered", "area_entered"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 3, 2, 0, 3, 1, 4, 2, 0, 1073741824, 0, 6, 5, -1, 3, 7, 3, 8, 4, 9, 5, 0, 1073741825, 0, 11, 10, -1, 3, 12, 6, 13, 7, 14, 8, 0),
+"variants": [Vector2(97, 368), ExtResource("2_lvxji"), 1000.0, Vector2(106, 23), 1.5708, ExtResource("3_p47bc"), Vector2(106, 24), -1.5708, SubResource("CapsuleShape2D_bx1b7")],
+"version": 3
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
 radius = 17.5286
@@ -10,7 +28,7 @@ radius = 17.5286
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(83, 185)
 script = ExtResource("1_dovo2")
-laser_scene = ExtResource("2_gmlin")
+laser_scene = SubResource("PackedScene_75vfm")
 speed = 450.0
 metadata/_edit_group_ = true
 
@@ -20,7 +38,7 @@ rotation = 1.5708
 scale = Vector2(1.02867, 0.7)
 texture = ExtResource("1_8afob")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["player"]]
 position = Vector2(-1, -12.4753)
 scale = Vector2(1, 0.875744)
 polygon = PackedVector2Array(39, 38, -26, -50, -25, 118)
